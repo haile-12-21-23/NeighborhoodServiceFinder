@@ -6,7 +6,7 @@ import morgan from 'morgan';
 import connectDB from './config/db.js';
 // import userRoutes from './routes/userRoutes.js';
 // import serviceRoutes from './routes/serviceRoutes.js';
-// import { errorHandler, notFound } from './middleware/errorMiddleware.js';
+import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 
 dotenv.config();
 connectDB();
@@ -22,8 +22,8 @@ app.use(morgan('dev'));
 // app.use('/api/services', serviceRoutes);
 
 // Error handling middleware
-// app.use(notFound);
-// app.use(errorHandler);
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
