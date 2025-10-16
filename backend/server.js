@@ -3,13 +3,13 @@ import dotenv from "dotenv";
 import cors from 'cors';
 import morgan from 'morgan';
 
-// import connectDB from './config/db.js';
+import connectDB from './config/db.js';
 // import userRoutes from './routes/userRoutes.js';
 // import serviceRoutes from './routes/serviceRoutes.js';
 // import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 
 dotenv.config();
-
+connectDB();
 const app=express();
 
 app.use(cors());
