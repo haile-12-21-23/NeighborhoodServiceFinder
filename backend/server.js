@@ -4,7 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 
 import connectDB from './config/db.js';
-// import userRoutes from './routes/userRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 // import serviceRoutes from './routes/serviceRoutes.js';
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 
@@ -18,7 +18,7 @@ app.use(morgan('dev'));
 
 
 // Routes
-// app.use('/api/users', userRoutes);
+app.use('/api/users', userRoutes);
 // app.use('/api/services', serviceRoutes);
 
 // Error handling middleware

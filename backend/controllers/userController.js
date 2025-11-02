@@ -1,7 +1,6 @@
-import moduleName from 'express-async-handler';
-import User from '../models/userModel';
-import generatedToke from '../utils/generateToken';
-import { token } from 'morgan';
+import asyncHandler  from 'express-async-handler';
+import User from '../models/userModel.js';
+import generatedToke from '../utils/generateToken.js';
 
 // @desc Register a new user
 // @route POST /api/users/register
@@ -42,7 +41,7 @@ const registerUser=asyncHandler(async (req,res)=>{
 const authUser =asyncHandler(async (req,res)=>{
     const {email,password}=req.body;
 
-    const user=User.findOne({email});
+    const user= await User.findOne({email});
     if(user && (await user.matchPassword(password))){
         res.json({
             _id:user._id,
@@ -54,8 +53,8 @@ const authUser =asyncHandler(async (req,res)=>{
         });
     }
     else{
-        res.status(401);
-        throw new Error('Invalid email or password!');
+        res.status(401).
+        json({error:'Invalid email or password!'});
     }
 });
 // @desc Get user profile
